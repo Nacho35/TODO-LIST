@@ -80,8 +80,8 @@ function loadTasks() {
 			const li = document.createElement("li");
 			li.innerHTML = `
         <span class="task-text">${task}</span>
-        <button class="edit-button">Editar</button>
-        <button class="delete-button">Eliminar</button>
+        <button class="edit-button">Edit</button>
+        <button class="delete-button">Delete</button>
       `;
 			list.appendChild(li);
 		});
@@ -96,8 +96,8 @@ function addTask() {
 		const li = document.createElement("li");
 		li.innerHTML = `
       <span class="task-text">${inputTask.value}</span>
-      <button class="edit-button">Editar</button>
-      <button class="delete-button">Eliminar</button>
+      <button class="edit-button">Edit</button>
+      <button class="delete-button">Delete</button>
     `;
 		list.appendChild(li);
 		inputTask.value = "";
@@ -124,18 +124,22 @@ function editTask(button) {
 	editInput.value = textContent.textContent;
 	task.innerHTML = "";
 	task.appendChild(editInput);
+
+	const buttonContainer = document.createElement("div");
+	buttonContainer.className = "button-container";
+
 	const saveButton = document.createElement("button");
-	saveButton.textContent = "Guardar";
+	saveButton.textContent = "Save";
 	const cancelButton = document.createElement("button");
-	cancelButton.textContent = "Cancelar";
+	cancelButton.textContent = "Cancel";
 
 	saveButton.onclick = function () {
 		const newText = editInput.value;
 		if (newText.trim() !== "") {
 			task.innerHTML = `
         <span class="task-text">${newText}</span>
-        <button class="edit-button">Editar</button>
-        <button class="delete-button">Eliminar</button>
+        <button class="edit-button">Edit</button>
+        <button class="delete-button">Delete</button>
       `;
 			saveTasksToLocalStorage();
 			showToast("success", "Tarea editada con éxito");
@@ -147,13 +151,14 @@ function editTask(button) {
 	cancelButton.onclick = function () {
 		task.innerHTML = `
       <span class="task-text">${textContent.textContent}</span>
-      <button class="edit-button">Editar</button>
-      <button class="delete-button">Eliminar</button>
+      <button class="edit-button">Edit</button>
+      <button class="delete-button">Delete</button>
     `;
 	};
 
-	task.appendChild(saveButton);
-	task.appendChild(cancelButton);
+	buttonContainer.appendChild(saveButton);
+	buttonContainer.appendChild(cancelButton);
+	task.appendChild(buttonContainer);
 }
 
 // Marcar como completada

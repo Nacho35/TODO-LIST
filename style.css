@@ -1,3 +1,13 @@
+:root {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: auto;
+}
+
 .container {
 	display: flex;
 	flex-direction: column;
@@ -27,21 +37,29 @@
 	margin-left: 10px;
 }
 
-li {
+li > span {
 	text-decoration: none;
 	list-style-type: none;
 	font-size: large;
 	font-weight: 500;
 	text-transform: lowercase;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
 }
 
-.edit-button {
-	margin-left: 10px;
+ul {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
 }
 
-.delete-button {
-	margin-left: 10px;
-}
 .end-container {
 	display: flex;
 	flex-direction: row;
@@ -67,21 +85,33 @@ input:focus {
 	box-shadow: 5.5px 7px 0 black;
 }
 
-/** Continuar desde aca! */
+.button-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#list {
+	display: block;
+	flex-direction: column;
+	width: fit-content;
+	margin-top: 20px;
+	justify-content: center;
+	align-items: center;
+}
+
 .task-text {
 	font-family: "SF Pro";
+	text-transform: uppercase;
 	font-size: 1.5rem;
 	font-weight: 500;
 	color: #000;
 	margin: 0.5rem 0;
-}
-
-li {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	margin-top: 10px;
+	border: solid #333 2px;
+	padding: 0.5rem;
+	border-radius: 5px;
+	background: #e0e0e0;
+	box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
 }
 
 .clear-button {
