@@ -23,13 +23,13 @@
 - [Historial de Versiones](#historial-de-versiones)
   
 
-## Introducción
 <a name="introduccion"></a>
+## Introducción
 
 EasyTask es una aplicación web simple para gestionar tareas diarias. Permite agregar, eliminar, editar y marcar tareas como completadas.
 
-## Características
 <a name="caracteristicas"></a>
+## Características
 
 - Agregar tareas
   
@@ -44,24 +44,24 @@ EasyTask es una aplicación web simple para gestionar tareas diarias. Permite ag
 - Botón para vaciar la lista de tareas
   
 
-## Requisitos
 <a name="requisitos"></a>
+## Requisitos
 
 - Navegador web moderno (Google Chrome, Mozilla Firefox, Safari)
   
 - Conexión a Internet (para cargar fuentes y estilos)
   
 
-## Instalación
 <a name="instalacion"></a>
+## Instalación
 
 1. Clona el repositorio en tu máquina local.
   
 2. Abre el archivo `index.html` en un navegador web.
   
 
-## Uso
 <a name="uso"></a>
+## Uso
 
 1. Ingresa una tarea en el campo de texto.
   
@@ -76,8 +76,8 @@ EasyTask es una aplicación web simple para gestionar tareas diarias. Permite ag
 6. Vacía la lista de tareas haciendo clic en el botón "Clear".
   
 
-## Estructura del Proyecto
 <a name="estructura-del-proyecto"></a>
+## Estructura del Proyecto
 
 - `index.html`: archivo principal de la aplicación
   
@@ -86,8 +86,8 @@ EasyTask es una aplicación web simple para gestionar tareas diarias. Permite ag
 - `script.js`: archivo de JavaScript
   
 
-## Tecnologías Utilizadas
 <a name="tecnologias-utilizadas"></a>
+## Tecnologías Utilizadas
 
 - HTML5
   
@@ -98,13 +98,13 @@ EasyTask es una aplicación web simple para gestionar tareas diarias. Permite ag
 - Google Fonts (para fuentes)
   
 
-## Autor
 <a name="autor"></a>
+## Autor
 
 - Morales Ignacio
 
-## Cómo Contribuir
 <a name="como-contribuir"></a>
+## Cómo Contribuir
 
 ¿Quieres contribuir a mejorar EasyTask? ¡Genial! Aquí te dejo algunas formas de hacerlo:
 
@@ -117,7 +117,7 @@ EasyTask es una aplicación web simple para gestionar tareas diarias. Permite ag
 - Comparte EasyTask con amigos y colegas.
   
 
-## Historial de Versiones
 <a name="historial-de-versiones"></a>
+## Historial de Versiones
 
 - v1.0: Versión inicial del proyecto.
