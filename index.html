@@ -4,18 +4,24 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="style.css" />
-		<title>TODO</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Sofadi+One&display=swap"
+			rel="stylesheet" />
+		<title>EasyTask</title>
 	</head>
 	<body>
 		<div class="container">
 			<header>
-				<h1>My TODO List</h1>
+				<h1>EasyTask</h1>
 			</header>
 			<div class="input-container">
 				<input
 					id="inputTask"
 					type="text"
 					class="input-text"
+					maxlength="50"
 					placeholder="Add a new task"
 					aria-label="Add a new task" />
 				<button class="input-button">Add</button>
@@ -23,7 +29,7 @@
 			<ul id="list" aria-label="Task list"></ul>
 		</div>
 		<div class="end-container">
-			<button class="clear-button">Clear</button>
+			<button id="clear-button" class="clear-button">Clear</button>
 		</div>
 		<div id="toast-container" class="toast-container" role="alert"></div>
 		<script src="script.js"></script>

@@ -27,17 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		button.addEventListener("click", () => deleteTask(button));
 	});
 
-	document.querySelectorAll("#list li").forEach((li) => {
-		li.addEventListener("click", (event) => {
-			if (
-				event.target.tagName !== "BUTTON" &&
-				event.target.tagName !== "INPUT"
-			) {
-				completeTask(li);
-			}
-		});
-	});
-
 	document
 		.querySelector(".clear-button")
 		.addEventListener("click", clearTaskList);
@@ -74,17 +63,46 @@ function showToast(type, message) {
 // Cargar tareas
 function loadTasks() {
 	const list = document.getElementById("list");
+	const clearButton = document.getElementById("clear-button");
 	const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+
 	if (storedTasks) {
-		storedTasks.forEach((task) => {
+		storedTasks.forEach((task, index) => {
 			const li = document.createElement("li");
-			li.innerHTML = `
-        <span class="task-text">${task}</span>
+			const taskText = document.createElement("span");
+			taskText.className = "task-text";
+			taskText.textContent = task;
+
+			// Verificar si la tarea está completada
+			const completedTasks = JSON.parse(localStorage.getItem("completedTasks"));
+			if (completedTasks && completedTasks.includes(index)) {
+				taskText.classList.add("completed");
+			}
+
+			li.appendChild(taskText);
+			li.innerHTML += `
         <button class="edit-button">Edit</button>
-        <button class="delete-button">Delete</button>
+        <button class="delete-button">Del</button>
       `;
 			list.appendChild(li);
+			li.addEventListener("click", (event) => {
+				if (
+					event.target.tagName !== "BUTTON" &&
+					event.target.tagName !== "INPUT"
+				) {
+					completeTask(li);
+				}
+			});
 		});
+
+		// Mostrar botón "Clear" si hay tareas en la lista
+		if (list.children.length > 0) {
+			clearButton.style.display = "block";
+		} else {
+			clearButton.style.display = "none";
+		}
+	} else {
+		clearButton.style.display = "none";
 	}
 }
 
@@ -92,27 +110,89 @@ function loadTasks() {
 function addTask() {
 	const inputTask = document.getElementById("inputTask");
 	const list = document.getElementById("list");
+	const clearButton = document.getElementById("clear-button");
+
 	if (inputTask.value.trim() !== "") {
 		const li = document.createElement("li");
 		li.innerHTML = `
       <span class="task-text">${inputTask.value}</span>
       <button class="edit-button">Edit</button>
-      <button class="delete-button">Delete</button>
+      <button class="delete-button">Del</button>
     `;
 		list.appendChild(li);
+		li.addEventListener("click", (event) => {
+			if (
+				event.target.tagName !== "BUTTON" &&
+				event.target.tagName !== "INPUT"
+			) {
+				completeTask(li);
+			}
+		});
 		inputTask.value = "";
 		saveTasksToLocalStorage();
 		showToast("info", "Tarea agregada con éxito");
+
+		// Mostrar botón "Clear" si hay tareas en la lista
+		if (list.children.length > 0) {
+			clearButton.style.display = "block";
+		}
 	} else {
 		showToast("error", "Por favor, ingresa una tarea");
+		clearButton.style.display = "none";
 	}
 }
 
+// Al iniciar la aplicación, ocultar botón "Clear"
+document.addEventListener("DOMContentLoaded", function () {
+	document.getElementById("clear-button").style.display = "none";
+
+	// Al iniciar la aplicación, verificar tareas y mostrar/ocultar botón "Clear"
+	document.addEventListener("DOMContentLoaded", function () {
+		const list = document.getElementById("list");
+		const clearButton = document.getElementById("clear-button");
+
+		// Verificar si hay tareas en la lista al cargar la página
+		if (list.children.length > 0) {
+			clearButton.style.display = "block";
+		} else {
+			clearButton.style.display = "none";
+		}
+	});
+});
+
 // Eliminar tarea
 function deleteTask(button) {
-	button.parentElement.remove();
+	const task = button.parentElement;
+	const completedTasks = JSON.parse(localStorage.getItem("completedTasks"));
+	const tasks = JSON.parse(localStorage.getItem("tasks"));
+
+	if (task.parentNode !== null) {
+		const index = Array.prototype.indexOf.call(task.parentNode.children, task);
+
+		if (completedTasks && completedTasks.includes(index)) {
+			const newIndex = completedTasks.indexOf(index);
+			if (newIndex !== -1) {
+				completedTasks.splice(newIndex, 1);
+				localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
+			}
+		}
+
+		tasks.splice(index, 1);
+		localStorage.setItem("tasks", JSON.stringify(tasks));
+	}
+
+	task.remove();
 	updateTasksInLocalStorage();
 	showToast("info", "Tarea eliminada con éxito");
+
+	// Mostrar botón "Clear" si hay tareas en la lista
+	const list = document.getElementById("list");
+	const clearButton = document.getElementById("clear-button");
+	if (list.children.length > 0) {
+		clearButton.style.display = "block";
+	} else {
+		clearButton.style.display = "none";
+	}
 }
 
 // Editar tarea
@@ -139,7 +219,7 @@ function editTask(button) {
 			task.innerHTML = `
         <span class="task-text">${newText}</span>
         <button class="edit-button">Edit</button>
-        <button class="delete-button">Delete</button>
+        <button class="delete-button">Del</button>
       `;
 			saveTasksToLocalStorage();
 			showToast("success", "Tarea editada con éxito");
@@ -152,7 +232,7 @@ function editTask(button) {
 		task.innerHTML = `
       <span class="task-text">${textContent.textContent}</span>
       <button class="edit-button">Edit</button>
-      <button class="delete-button">Delete</button>
+      <button class="delete-button">Del</button>
     `;
 	};
 
@@ -164,15 +244,26 @@ function editTask(button) {
 // Marcar como completada
 function completeTask(task) {
 	const textContent = task.querySelector(".task-text");
+	const index = Array.prototype.indexOf.call(task.parentNode.children, task);
+
 	if (!textContent.classList.contains("completed")) {
 		textContent.classList.add("completed");
-		updateTasksInLocalStorage();
+		const completedTasks =
+			JSON.parse(localStorage.getItem("completedTasks")) || [];
+		completedTasks.push(index);
+		localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
 		showToast("info", "Tarea marcada como completada");
 	} else {
 		textContent.classList.remove("completed");
-		updateTasksInLocalStorage();
+		const completedTasks = JSON.parse(localStorage.getItem("completedTasks"));
+		const newIndex = completedTasks.indexOf(index);
+		if (newIndex !== -1) {
+			completedTasks.splice(newIndex, 1);
+		}
+		localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
 		showToast("warning", "Tarea desmarcada como completada");
 	}
+	updateTasksInLocalStorage();
 }
 
 // Vaciar lista de tareas
@@ -180,6 +271,7 @@ function clearTaskList() {
 	const list = document.getElementById("list");
 	list.innerHTML = "";
 	localStorage.removeItem("tasks");
+	localStorage.removeItem("completedTasks");
 	showToast("warning", "Lista de tareas vaciada");
 }
 
