@@ -2,32 +2,34 @@
 
 ## Índice
 
-- [Introducción](http://www.meta.ai/#introducci%C3%B3n)
+- [Introducción](#introduccion)
   
-- [Características](http://www.meta.ai/#caracter%C3%ADsticas)
+- [Características](#caracteristicas)
   
-- [Requisitos](http://www.meta.ai/#requisitos)
+- [Requisitos](#requisitos)
   
-- [Instalación](http://www.meta.ai/#instalaci%C3%B3n)
+- [Instalación](#instalacion)
   
-- [Uso](http://www.meta.ai/#uso)
+- [Uso](#uso)
   
-- [Estructura del Proyecto](http://www.meta.ai/#estructura-del-proyecto)
+- [Estructura del Proyecto](#estructura-del-proyecto)
   
-- [Tecnologías Utilizadas](http://www.meta.ai/#tecnolog%C3%ADas-utilizadas)
+- [Tecnologías Utilizadas](#tecnologias-utilizadas)
   
-- [Autor](http://www.meta.ai/#autor)
+- [Autor](#autor)
   
-- [Cómo Contribuir](http://www.meta.ai/#c%C3%B3mo-contribuir)
+- [Cómo Contribuir](#como-contribuir)
   
-- [Historial de Versiones](http://www.meta.ai/#historial-de-versiones)
+- [Historial de Versiones](#historial-de-versiones)
   
 
 ## Introducción
+<a name="introduccion"></a>
 
 EasyTask es una aplicación web simple para gestionar tareas diarias. Permite agregar, eliminar, editar y marcar tareas como completadas.
 
 ## Características
+<a name="caracteristicas"></a>
 
 - Agregar tareas
   
@@ -43,6 +45,7 @@ EasyTask es una aplicación web simple para gestionar tareas diarias. Permite ag
   
 
 ## Requisitos
+<a name="requisitos"></a>
 
 - Navegador web moderno (Google Chrome, Mozilla Firefox, Safari)
   
@@ -50,6 +53,7 @@ EasyTask es una aplicación web simple para gestionar tareas diarias. Permite ag
   
 
 ## Instalación
+<a name="instalacion"></a>
 
 1. Clona el repositorio en tu máquina local.
   
@@ -57,6 +61,7 @@ EasyTask es una aplicación web simple para gestionar tareas diarias. Permite ag
   
 
 ## Uso
+<a name="uso"></a>
 
 1. Ingresa una tarea en el campo de texto.
   
@@ -72,6 +77,7 @@ EasyTask es una aplicación web simple para gestionar tareas diarias. Permite ag
   
 
 ## Estructura del Proyecto
+<a name="estructura-del-proyecto"></a>
 
 - `index.html`: archivo principal de la aplicación
   
@@ -81,6 +87,7 @@ EasyTask es una aplicación web simple para gestionar tareas diarias. Permite ag
   
 
 ## Tecnologías Utilizadas
+<a name="tecnologias-utilizadas"></a>
 
 - HTML5
   
@@ -92,10 +99,12 @@ EasyTask es una aplicación web simple para gestionar tareas diarias. Permite ag
   
 
 ## Autor
+<a name="autor"></a>
 
 - Morales Ignacio
 
 ## Cómo Contribuir
+<a name="como-contribuir"></a>
 
 ¿Quieres contribuir a mejorar EasyTask? ¡Genial! Aquí te dejo algunas formas de hacerlo:
 
@@ -109,5 +118,6 @@ EasyTask es una aplicación web simple para gestionar tareas diarias. Permite ag
   
 
 ## Historial de Versiones
+<a name="historial-de-versiones"></a>
 
 - v1.0: Versión inicial del proyecto.
