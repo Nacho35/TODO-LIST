@@ -130,14 +130,14 @@ function addTask() {
 		});
 		inputTask.value = "";
 		saveTasksToLocalStorage();
-		showToast("info", "Tarea agregada con éxito");
+		showToast("info", "Task successfully added");
 
 		// Mostrar botón "Clear" si hay tareas en la lista
 		if (list.children.length > 0) {
 			clearButton.style.display = "block";
 		}
 	} else {
-		showToast("error", "Por favor, ingresa una tarea");
+		showToast("error", "Please enter a task");
 		clearButton.style.display = "none";
 	}
 }
@@ -183,7 +183,7 @@ function deleteTask(button) {
 
 	task.remove();
 	updateTasksInLocalStorage();
-	showToast("info", "Tarea eliminada con éxito");
+	showToast("info", "Task successfully deleted");
 
 	// Mostrar botón "Clear" si hay tareas en la lista
 	const list = document.getElementById("list");
@@ -222,9 +222,9 @@ function editTask(button) {
         <button class="delete-button">Del</button>
       `;
 			saveTasksToLocalStorage();
-			showToast("success", "Tarea editada con éxito");
+			showToast("success", "Task successfully edited");
 		} else {
-			showToast("error", "Por favor, ingresa una tarea");
+			showToast("error", "Please enter a task");
 		}
 	};
 
@@ -252,7 +252,7 @@ function completeTask(task) {
 			JSON.parse(localStorage.getItem("completedTasks")) || [];
 		completedTasks.push(index);
 		localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
-		showToast("info", "Tarea marcada como completada");
+		showToast("info", "Task marked as completed");
 	} else {
 		textContent.classList.remove("completed");
 		const completedTasks = JSON.parse(localStorage.getItem("completedTasks"));
@@ -261,7 +261,7 @@ function completeTask(task) {
 			completedTasks.splice(newIndex, 1);
 		}
 		localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
-		showToast("warning", "Tarea desmarcada como completada");
+		showToast("warning", "Task unmarked as completed");
 	}
 	updateTasksInLocalStorage();
 }
@@ -272,7 +272,7 @@ function clearTaskList() {
 	list.innerHTML = "";
 	localStorage.removeItem("tasks");
 	localStorage.removeItem("completedTasks");
-	showToast("warning", "Lista de tareas vaciada");
+	showToast("warning", "Task list emptied");
 }
 
 // Guardar tareas en localStorage

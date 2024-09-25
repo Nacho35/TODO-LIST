@@ -79,6 +79,7 @@ ul {
 	align-items: center;
 	justify-content: center;
 	padding-top: 1rem;
+	padding-bottom: 40px;
 	width: 100%;
 }
 
@@ -267,6 +268,18 @@ button:hover::before {
 
 .toast.error {
 	background-color: #f44336;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: #f9f9f9;
+	text-align: center;
+	padding: 10px;
+	border-top: 1px solid #ddd;
+	z-index: 9999;
+	font-weight: 500;
 }
 
 @media screen and (min-width: 768px) {
